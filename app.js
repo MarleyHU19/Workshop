@@ -16,10 +16,10 @@
 
     /* ---------------------------------- Local Functions ---------------------------------- */
     function findByName() {
-        if($('.search-key').val().length<2)return;
+        if($('.search-key').val().length>2)return;
         var value=$('.search-key').val();
         
-        if($('.search-key').val()!= value.toUpperCase())return;
+       // if($('.search-key').val()!= value.toUpperCase())return;
         service.findByName($('.search-key').val()).done(function (employees) {
             var l = employees.length;
             var e;
@@ -32,10 +32,10 @@
     }
 
     function findByL_Name() {
-        if($('.search-key2').val().length<2)return;
+        if($('.search-key2').val().length>2)return;
         var value=$('.search-key2').val();
         
-        if($('.search-key2').val()!= value.toUpperCase())return;
+       // if($('.search-key2').val()!= value.toUpperCase())return;
         service.findByName($('.search-key2').val()).done(function (employees) {
             var l = employees.length;
             var e;
