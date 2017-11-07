@@ -16,48 +16,36 @@
 
     /* ---------------------------------- Local Functions ---------------------------------- */
     function findByName() {
-        //if($('.search-key').val().length<2)return;
-         var firstName=$('.search-key').val();
-         var DR;
-        firstName= firstName.replace(/\s+/g, '');
-        service.findByName(firstName).done(function (employees){ 
-            var l = employees.length;
-            var e;
-            $('.employee-list').empty();
-            for (var i = 0; i < l; i++) {
-             e = employees[i];
-             DR=  e.firstName + '  ' + e.lastName;
-            }
-        });
-         if($('.search-key').val().length>1){
-                document.getElementById('output').innerHTML= DR;
-                } else{
-                 document.getElementById('output').innerHTML=[];
-                }          
-            
-    }
-
-    function findByL_Name(){
-        //if($('.search-key2').val().length<2)return;
-         var lastName=$('.search-key2').val();
-         var DR;
-        lastName= lastName.replace(/\s+/g,'');
-        service.findByL_Name(lastName).done(function (employees) {
+        if($('.search-key').val().length<2)return;
+            var value=$('.search-key').val();
+        
+       // if($('.search-key').val()!= value.toUpperCase())return;
+        service.findByName($('.search-key').val()).done(function (employees) {
             var l = employees.length;
             var e;
             $('.employee-list').empty();
             for (var i = 0; i < l; i++) {
                 e = employees[i];
-            DR= e.firstName + '  ' + e.lastName;
+                $('.employee-list').append('<li><a href="#employees/' + e.id + '">' + e.firstName + '  ' + e.lastName + '</a></li>');
             }
-            
         });
+    }
+    
+
+    function findByL_Name() {
+        if($('.search-key2').val().length<2)return;
+        var value=$('.search-key2').val();
         
-        if($('.search-key2').val() length>1){
-            document.getElementById('output').innerHTML= DR;
-            } else{
-            document.getElementById('output').innerHTML=[];
+       // if($('.search-key2').val()!= value.toUpperCase())return;
+        service.findByName($('.search-key2').val()).done(function (employees) {
+            var l = employees.length;
+            var e;
+            $('.employee-list').empty();
+            for (var i = 0; i < l; i++) {
+                e = employees[i];
+                $('.employee-list').append('<li><a href="#employees/' + e.id + '">' + e.firstName + '  ' + e.lastName + '</a></li>');
             }
+        });
     }
 
-});
+}()); 
